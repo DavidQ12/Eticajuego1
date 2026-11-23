@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mi Isla Única · Derecho a la identidad</title>
+<style>
+:root{--bg:linear-gradient(#bfe9ff,#fff4d9 50%,#c9f5d0);--card:#ffffff;--ink:#3b2f5c;--p:#7c5cff;--ok:#2fbf71;--sky:#c9ecff;--line:#e8dcc0;--soft:#f3eeff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:linear-gradient(#1d1833,#2b2450 55%,#1f3b5c);--card:#2b2450;--ink:#fff3d6;--p:#a18bff;--sky:#2b3f6b;--line:#443b73;--soft:#352d63}}
+:root[data-theme="dark"]{--bg:linear-gradient(#1d1833,#2b2450 55%,#1f3b5c);--card:#2b2450;--ink:#fff3d6;--p:#a18bff;--sky:#2b3f6b;--line:#443b73;--soft:#352d63}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Chalkboard SE","Comic Sans MS",ui-rounded,system-ui,sans-serif;font-size:20px;overflow-x:hidden}
+#root{max-width:720px;margin:0 auto;padding:14px;position:relative}
+h1,h2,h3,p{margin:0}
+.sky{position:fixed;inset:0;pointer-events:none;z-index:0;font-size:46px;opacity:.55}
+.sky span{position:absolute;animation:drift 38s linear infinite}
+@keyframes drift{from{transform:translateX(-80px)}to{transform:translateX(110vw)}}
+#root>*{position:relative;z-index:1}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+.top h1{font-size:22px}
+.stars{background:var(--card);border:3px solid var(--line);border-radius:99px;padding:4px 12px;font-size:22px;white-space:nowrap}
+.bubble{display:flex;align-items:center;gap:10px;background:var(--card);border:3px solid var(--line);border-radius:24px;padding:10px 12px;margin-bottom:14px}
+.guide{font-size:58px;display:inline-block}.guide.talk{animation:talk .45s infinite alternate}
+@keyframes talk{from{transform:scale(1) rotate(-6deg)}to{transform:scale(1.15) rotate(6deg) translateY(-4px)}}
+.bubble p{flex:1;font-size:22px;line-height:1.3}
+.say,.btn,.mic{font:inherit;border:0;cursor:pointer}
+.say{background:var(--soft);font-size:26px;width:52px;height:52px;border-radius:16px}
+.btn{background:var(--p);color:#fff;font-size:26px;font-weight:700;padding:14px 30px;border-radius:20px;box-shadow:0 6px 0 rgba(0,0,0,.2)}
+.btn.go{background:var(--ok)}.btn:active{transform:translateY(3px)}
+.mic{width:112px;height:112px;border-radius:50%;background:#ff6b8a;color:#fff;font-size:52px;box-shadow:0 7px 0 rgba(0,0,0,.2);display:inline-flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+.mic small{font-size:14px;margin-top:4px}
+.mic.rec{background:#e03131;animation:pulse .7s infinite}
+@keyframes pulse{50%{transform:scale(1.12)}}
+.panel{background:var(--card);border:3px solid var(--line);border-radius:24px;padding:16px;text-align:center;animation:pop .35s}
+@keyframes pop{from{transform:scale(.9);opacity:0}}
+.row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:14px 0}
+.tile{font:inherit;color:var(--ink);background:var(--soft);border:5px solid transparent;border-radius:20px;min-width:84px;min-height:84px;font-size:42px;cursor:pointer;padding:6px 14px;animation:pop .35s}
+.tile small{display:block;font-size:20px}
+.tile.on{border-color:var(--p);background:var(--card)}
+.tile.good{border-color:var(--ok);background:#d8f7e5;color:#1a5c37}
+.tile.fade{opacity:.35}
+.tile.bad{animation:wob .45s}
+.tile.hint{border-color:#ffb020;animation:pulse .9s infinite}
+@keyframes wob{25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
+input{font:inherit;font-size:20px;text-align:center;border:3px solid var(--line);border-radius:14px;padding:6px;width:min(100%,220px);background:var(--card);color:var(--ink)}
+.box{width:56px;height:66px;border:3px dashed var(--line);border-radius:12px;font-size:36px;display:grid;place-items:center;font-weight:700}
+.box.f{border:3px solid var(--ok);background:#d8f7e5;color:#1a5c37}
+.bigname{font-size:44px;font-weight:700;color:var(--p)}
+.dots{display:flex;gap:8px;justify-content:center;margin-top:14px}
+.dots i{width:14px;height:14px;border-radius:50%;background:var(--line)}.dots i.d{background:var(--p)}
+.carnet{background:var(--card);border:4px solid var(--p);border-radius:22px;padding:12px;margin:14px 0}
+.ct{font-weight:700;text-align:center;margin-bottom:8px}
+.cb{display:flex;gap:12px;align-items:center}
+.photo{font-size:52px;background:var(--sky);border-radius:16px;width:84px;height:84px;display:grid;place-items:center;flex:none}
+.slots{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;flex:1;text-align:center;font-size:26px}
+.slot{background:var(--soft);border-radius:12px;padding:6px 0;opacity:.6}.slot.on{opacity:1;background:#d8f7e5}
+.nm{text-align:center;font-size:28px;font-weight:700;margin-top:6px}
+.path{display:flex;justify-content:space-around;align-items:flex-start;margin:18px 0}
+.node{text-align:center;font-size:16px;font-weight:700}
+.node button,.node div{width:92px;height:92px;border-radius:50%;border:5px solid var(--line);background:var(--card);font-size:44px;display:grid;place-items:center;margin:0 auto 6px}
+.node button{font:inherit;font-size:44px;border-color:var(--ok);cursor:pointer;animation:pulse 1.2s infinite}
+details{background:var(--card);border:3px solid var(--line);border-radius:16px;padding:10px 14px;font-size:15px;line-height:1.4}
+summary{cursor:pointer;font-weight:700}details p{margin-top:8px}
+.conf{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:5}
+.conf span{position:absolute;top:-40px;font-size:30px;animation:fall 2.6s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.conf,.sky{display:none}*{animation:none!important}}
+body{min-height:100vh;background-attachment:fixed}
+h1,h2{background:linear-gradient(90deg,#ff5d8f,#ffb020,#2fbf71,#3aa0ff,#7c5cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tile{color:#3b2f5c;transition:transform .15s}
+.tile:nth-child(6n+1){background:#ffd6e0}.tile:nth-child(6n+2){background:#ffe9a8}.tile:nth-child(6n+3){background:#c8f5d0}.tile:nth-child(6n+4){background:#bfe9ff}.tile:nth-child(6n+5){background:#e3d4ff}.tile:nth-child(6n){background:#ffd2a8}
+.tile.on{background:#fff}.tile.good{background:#d8f7e5;color:#1a5c37}
+.tile:hover{transform:translateY(-5px) rotate(-2deg)}
+.btn{transition:transform .15s}.btn:hover{transform:scale(1.06)}
+.guide{animation:float 3s ease-in-out infinite}.guide.talk{animation:talk .45s infinite alternate}
+@keyframes float{50%{transform:translateY(-8px)}}
+.stars{animation:glow 2s ease-in-out infinite}@keyframes glow{50%{box-shadow:0 0 18px #ffb020}}
+.spin{animation:spin 2.5s ease-in-out infinite}@keyframes spin{50%{transform:rotate(12deg) scale(1.2)}}
+.pop{display:inline-block;animation:pop .35s;cursor:pointer}
+.frame{font-size:58px;border:6px dashed #ffb020;border-radius:24px;min-height:100px;padding:8px 16px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;background:#fff8e1}
+.stage{width:170px;height:170px;border-radius:50%;margin:14px auto 6px;display:grid;place-items:center;position:relative;font-size:84px;animation:float 3s ease-in-out infinite}
+.stage .acc{position:absolute;top:-14px;font-size:54px;z-index:2}.face{position:relative}.pet{position:absolute;right:-34px;bottom:-4px;font-size:46px}
+.photo{position:relative}.photo b{position:absolute;top:-12px;font-size:28px}
+.bubble{border-color:#7c5cff}.panel{border-color:#ffb020}
+.node button{background:linear-gradient(135deg,#6ee7a8,#3aa0ff)}
+.carnet{background:linear-gradient(135deg,var(--card),var(--soft))}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script>
+const {useState,useEffect,useMemo}=React,h=React.createElement;
+const ev=(n,d)=>window.dispatchEvent(new CustomEvent(n,{detail:d}));
+const say=(t,cb)=>{if(/^¡(Muy bien|Genial|Lo lograste|Mucho gusto|Escribiste|Naciste|Qué bonita|Tu lugar|Eres único)/.test(t))ev('burst');try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='es-419';u.rate=.85;u.pitch=1.2;u.onstart=()=>ev('spk',1);u.onend=()=>{ev('spk',0);cb&&cb()};u.onerror=()=>ev('spk',0);speechSynthesis.speak(u)}catch(e){cb&&cb()}};
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+const shuf=a=>[...a].sort(()=>Math.random()-.5);
+const norm=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const AV=['🦊','🐼','🦁','🐸','🐰','🐯'],NAMES=['Sofía','Mateo','Valeria','Diego'],OK=['¡Muy bien!','¡Genial!','¡Lo lograste!'];
+
+function Lula({t}){const [on,setOn]=useState(false);
+ useEffect(()=>{const f=e=>setOn(!!e.detail);window.addEventListener('spk',f);return()=>window.removeEventListener('spk',f)},[]);
+ useEffect(()=>{say(t)},[t]);
+ return h('div',{className:'bubble'},h('span',{className:'guide'+(on?' talk':'')},'🦉'),h('p',null,t),h('button',{className:'say','aria-label':'Escuchar otra vez',onClick:()=>say(t)},'🔊'))}
+
+function Mic({onText,onFail,loose,label}){const [on,setOn]=useState(false);
+ const go=()=>{const fail=()=>{setOn(false);loose?onText(''):onFail&&onFail()};
+  if(!SR)return fail();
+  try{speechSynthesis.cancel();const r=new SR();r.lang='es-419';r.onresult=e=>{setOn(false);onText(e.results[0][0].transcript)};r.onerror=fail;r.onend=()=>setOn(false);setOn(true);r.start()}catch(e){fail()}};
+ return h('button',{className:'mic'+(on?' rec':''),'aria-label':'Hablar',onClick:go},on?'👂':'🎤',label&&h('small',null,label))}
+
+function Confetti(){return h('div',{className:'conf'},Array.from({length:16},(_,i)=>h('span',{key:i,style:{left:(i*6.5)%100+'%',animationDelay:(i%5)*.25+'s'}},['⭐','🎉','✨','🌈'][i%4])))}
+
+function Carnet({name,av,got,st}){const sd=st&&got.includes('style');
+ const S=[['name','🏷️'],['date','🎂'],['place','📍'],['fam','👨‍👩‍👧'],['nat','🌎']];
+ return h('div',{className:'carnet'},h('div',{className:'ct'},'🪪 Mi carnet'),
+  h('div',{className:'cb'},h('div',{className:'photo',style:sd?{background:st.bg}:undefined},sd&&st.acc?h('b',null,st.acc):null,got.includes('name')?av:'❔'),
+   h('div',{className:'slots'},S.map(([k,e])=>h('div',{key:k,className:'slot'+(got.includes(k)?' on':'')},got.includes(k)?e:'🔒')))),
+  got.includes('name')&&h('div',{className:'nm'},name))}
+
+function Setup({name,setName,av,setAv,next}){
+ const set=n=>{n=(n||'').trim().split(/\s+/)[0].replace(/[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/g,'').slice(0,8);
+  if(!n){say('No te escuché. ¡Toca tu nombre!');return}
+  n=n[0].toUpperCase()+n.slice(1).toLowerCase();setName(n);say('¡Mucho gusto, '+n+'!')};
+ return h('div',null,h(Lula,{t:'¿Cómo te llamas? Toca el micrófono y dime tu nombre.'}),
+  h('div',{className:'panel'},
+   h('div',{className:'row'},AV.map(a=>h('button',{key:a,className:'tile'+(a===av?' on':''),onClick:()=>setAv(a)},a))),
+   h(Mic,{onText:set,onFail:()=>say('No pude escucharte. ¡Toca tu nombre aquí abajo!'),label:'Dime tu nombre'}),
+   h('div',{className:'row'},NAMES.map(n=>h('button',{key:n,className:'tile',style:{fontSize:20,minHeight:50,minWidth:0},onClick:()=>set(n)},n))),
+   h('input',{placeholder:'👩‍🏫 O escríbelo aquí',maxLength:8,onKeyDown:e=>e.key==='Enter'&&set(e.target.value),onBlur:e=>e.target.value&&set(e.target.value)}),
+   name&&h('div',{style:{marginTop:12}},h('div',{className:'bigname'},name),h('button',{className:'btn go',style:{marginTop:10},onClick:next},'✔ ¡Listo!'))))}
+
+function Puzzle({name,next}){
+ const L=useMemo(()=>[...name.toUpperCase()],[name]);
+ const tiles=useMemo(()=>shuf(L.map((c,i)=>({c,i}))),[L]);
+ const [pos,setPos]=useState(0),[used,setUsed]=useState([]),[bad,setBad]=useState(-1);
+ const hintI=tiles.find(t=>!used.includes(t.i)&&t.c===L[pos]);
+ const tap=t=>{if(used.includes(t.i))return;say(t.c);
+  if(t.c===L[pos]){setUsed([...used,t.i]);setPos(pos+1);if(pos+1===L.length)setTimeout(()=>say('¡Escribiste '+name+'!',next),700)}
+  else{setBad(t.i);setTimeout(()=>setBad(-1),500)}};
+ return h('div',null,h(Lula,{t:'Toca las letras que brillan para escribir tu nombre.'}),
+  h('div',{className:'panel'},h('div',{className:'row'},L.map((c,i)=>h('div',{key:i,className:'box'+(i<pos?' f':'')},i<pos?c:''))),
+   h('div',{className:'row'},tiles.map(t=>h('button',{key:t.i,className:'tile'+(bad===t.i?' bad':'')+(used.includes(t.i)?' fade':'')+(hintI&&hintI.i===t.i?' hint':''),onClick:()=>tap(t)},t.c)))))}
+
+const Q=[
+ {q:'¿Qué tienes tú desde que naciste? ¿Un nombre, un coche o un celular?',o:[['🏷️','nombre',1,['nombre']],['🚗','coche',0,['coche','carro']],['📱','celular',0,['celular','telefono']]]},
+ {q:'Si otro niño se llama igual que tú, ¿tú eres único? ¿Sí o no?',o:[['✨','sí',1,['si','unico']],['🙅','no',0,['no']]]}];
+function Quiz({next}){
+ const [i,setI]=useState(0),[gone,setGone]=useState([]),[hit,setHit]=useState(-1);
+ const q=Q[i],opts=useMemo(()=>shuf(q.o),[i]);
+ const pick=(o,k)=>{if(o[2]){setHit(k);say(OK[i]+' '+o[1],()=>{setHit(-1);setGone([]);i+1<Q.length?setI(i+1):next()})}
+  else{setGone([...gone,k]);say('¡Casi! Prueba otra vez.')}};
+ const voice=t=>{const w=norm(t).split(/[^a-z]+/);const k=opts.findIndex(o=>o[3].some(x=>w.includes(x)));k<0?say('No te entendí. ¡Toca la respuesta!'):pick(opts[k],k)};
+ return h('div',null,h(Lula,{t:q.q}),
+  h('div',{className:'panel'},h('div',{className:'row'},opts.map((o,k)=>h('button',{key:i+'-'+k,className:'tile'+(hit===k?' good':'')+(gone.includes(k)?' fade bad':''),onClick:()=>pick(o,k)},o[0],h('small',null,o[1])))),
+   h(Mic,{onText:voice,onFail:()=>say('¡Toca la respuesta!'),label:'Dilo con tu voz'})))}
+
+function Match({name,av,next}){
+ const P=useMemo(()=>[['me',av,name],['dog','🐶','Fido'],['tree','🌳','Árbol']],[]);
+ const R=useMemo(()=>shuf(P),[]);
+ const [sel,setSel]=useState(null),[done,setDone]=useState([]),[bad,setBad]=useState(null);
+ const pickR=p=>{say(p[2]);if(!sel||done.includes(p[0]))return;
+  if(sel===p[0]){const d=[...done,p[0]];setDone(d);setSel(null);setTimeout(()=>say('¡Muy bien!',()=>d.length===3&&next()),900)}
+  else{setBad(p[0]);setTimeout(()=>setBad(null),500)}};
+ return h('div',null,h(Lula,{t:'Toca un dibujo de arriba y luego su nombre de abajo. ¡Yo te los leo!'}),
+  h('div',{className:'panel'},h('div',{className:'row'},P.map(p=>h('button',{key:p[0],className:'tile'+(sel===p[0]?' on':'')+(done.includes(p[0])?' good':''),onClick:()=>!done.includes(p[0])&&setSel(p[0])},p[1]))),
+   h('div',{style:{fontSize:32}},'⬇️'),
+   h('div',{className:'row'},R.map(p=>h('button',{key:p[0],className:'tile'+(bad===p[0]?' bad':'')+(done.includes(p[0])?' good':''),style:{fontSize:26},onClick:()=>pickR(p)},p[2])))))}
+
+function Finale({finish}){const [d,setD]=useState(false);
+ const win=()=>{setD(true);say('¡Eres único y valioso! ¡Tienes derecho a tu nombre!')};
+ return h('div',null,h(Lula,{t:d?'¡Ganaste la insignia! Tu nombre ya está en tu carnet.':'Toca el micrófono y grita muy fuerte: ¡Soy único!'}),
+  h('div',{className:'panel'},d?h('div',null,h(Confetti),h('div',{style:{fontSize:90}},'🏅'),h('h2',null,'¡Tengo nombre!'),h('button',{className:'btn go',style:{marginTop:14},onClick:finish},'▶ Seguir')):h(Mic,{loose:1,onText:win,label:'¡Soy único!'})))}
+
+const MONTHS=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],MEM=['🎈','💝','🌷','🌧️','🌸','☀️','🏖️','🍉','🍂','🎃','🦃','🎄'];
+const FAM=['👵','👴','👩','👨','🧑','👧','👦','👶','🐶','🐱'],PL=[['🏙️','la ciudad'],['🏘️','el pueblo'],['🏖️','la playa'],['⛰️','la montaña']];
+const FL=[['🇸🇻','El Salvador'],['🇲🇽','México'],['🇨🇴','Colombia'],['🇬🇹','Guatemala'],['🇭🇳','Honduras'],['🇪🇸','España'],['🇦🇷','Argentina'],['🌍','Otro país']];
+const BG=['#ffd6e0','#ffe9a8','#c8f5d0','#bfe9ff','#e3d4ff','#ffd2a8'],ACC=['','🎩','👑','🎀','🕶️','🎧'],PET=['','🐶','🐱','🦜','🐠'],LK=[['🍕','pizza'],['🍎','manzanas'],['⚽','el fútbol'],['🎨','pintar'],['🎵','la música'],['🦋','las mariposas']];
+function Bar({s,n,back}){return h('div',{className:'top'},h('button',{className:'say','aria-label':'Volver al mapa',onClick:back},'🏝️'),h('div',{className:'stars'},'⭐'.repeat(s)+'☆'.repeat(Math.max(0,n-s))))}
+function Dots({s,n}){return h('div',{className:'dots'},Array.from({length:n},(_,i)=>h('i',{key:i,className:i<=s?'d':''})))}
+function Fin({t,shout,badge,title,win,finish}){const [d,setD]=useState(false);
+ return h('div',null,h(Lula,{t:d?win:t}),h('div',{className:'panel'},d?h('div',null,h(Confetti),h('div',{className:'spin',style:{fontSize:90}},badge),h('h2',null,title),h('button',{className:'btn go',style:{marginTop:14},onClick:finish},'▶ Seguir')):h(Mic,{loose:1,onText:()=>setD(true),label:shout})))}
+function Pick({t,items,sayf,btn,next}){const [p,setP]=useState(-1);
+ return h('div',null,h(Lula,{t}),h('div',{className:'panel'},h('div',{className:'row'},items.map((x,k)=>h('button',{key:k,className:'tile'+(p===k?' good':''),style:{fontSize:52,minWidth:120,minHeight:120},onClick:()=>{setP(k);say(sayf(x))}},x[0],h('small',null,x[1])))),p>=0&&h('button',{className:'btn go',onClick:next},btn)))}
+function Month({next}){const [m,setM]=useState(-1);
+ const pick=k=>{setM(k);say('¡Naciste en '+MONTHS[k]+'! ¡Muy bien!')};
+ const voice=t=>{const w=norm(t).split(/[^a-z]+/);const k=MONTHS.findIndex(x=>w.includes(x));k<0?say('No te entendí. ¡Toca tu mes!'):pick(k)};
+ return h('div',null,h(Lula,{t:'¿En qué mes es tu cumpleaños? Dilo con tu voz o toca tu mes.'}),h('div',{className:'panel'},h(Mic,{onText:voice,onFail:()=>say('¡Toca tu mes!'),label:'Mi mes'}),
+  h('div',{className:'row'},MONTHS.map((x,k)=>h('button',{key:k,className:'tile'+(m===k?' good':''),style:{fontSize:34,minWidth:100,minHeight:100},onClick:()=>pick(k)},MEM[k],h('small',{style:{fontSize:15}},x)))),
+  m>=0&&h('button',{className:'btn go',onClick:next},'🎂 ¡Listo!')))}
+function Family({next}){const [f,setF]=useState([]);
+ return h('div',null,h(Lula,{t:'Toca a las personas que te quieren y te cuidan. ¡Cada familia es diferente!'}),h('div',{className:'panel'},
+  h('div',{className:'frame'},f.length?f.map((e,i)=>h('span',{key:i,className:'pop',onClick:()=>setF(f.filter((_,j)=>j!==i))},e)):'🖼️'),
+  h('div',{className:'row'},FAM.map(e=>h('button',{key:e,className:'tile',onClick:()=>{if(f.length<5){setF([...f,e]);say('¡Aquí está!')}}},e))),
+  f.length>0&&h('button',{className:'btn go',onClick:()=>say('¡Qué bonita familia!',next)},'👨‍👩‍👧 ¡Listo!')))}
+function Level2({finish,back}){const [s,setS]=useState(0),next=()=>setS(x=>x+1);
+ return h('div',null,h(Bar,{s,n:4,back}),s===0&&h(Month,{next}),s===1&&h(Family,{next}),
+  s===2&&h(Pick,{t:'¿Cómo es el lugar donde vives? Toca el dibujo.',items:PL,sayf:x=>'¡Tu lugar es '+x[1]+'!',btn:'📍 ¡Listo!',next}),
+  s===3&&h(Fin,{t:'Toca el micrófono y di: ¡Yo tengo una historia!',shout:'¡Tengo historia!',badge:'📖',title:'¡Tengo historia!',win:'¡Tienes una historia, una familia y un lugar! ¡Eso es tu identidad!',finish}),h(Dots,{s,n:4}))}
+function Builder({av,st,setSt,next}){const up=(k,v)=>{setSt({...st,[k]:v});say('¡Mira qué lindo!')};
+ return h('div',null,h(Lula,{t:'Dale tu estilo único. Elige un color, un accesorio y una mascota.'}),h('div',{className:'panel'},
+  h('div',{className:'stage',style:{background:st.bg}},h('div',{className:'acc'},st.acc),h('div',{className:'face'},av,st.pet&&h('span',{className:'pet'},st.pet))),
+  h('div',{className:'row'},BG.map(c=>h('button',{key:c,className:'tile'+(st.bg===c?' on':''),'aria-label':'color',style:{background:c,minWidth:56,minHeight:56},onClick:()=>up('bg',c)}))),
+  h('div',{className:'row'},ACC.map(a=>h('button',{key:a,className:'tile'+(st.acc===a?' on':''),onClick:()=>up('acc',a)},a||'🚫'))),
+  h('div',{className:'row'},PET.map(a=>h('button',{key:a,className:'tile'+(st.pet===a?' on':''),onClick:()=>up('pet',a)},a||'🚫'))),
+  h('button',{className:'btn go',onClick:next},'✔ ¡Listo!')))}
+function Likes({next}){const [l,setL]=useState([]);
+ return h('div',null,h(Lula,{t:'¿Qué te gusta más? Toca todo lo que quieras. ¡A cada niño le gustan cosas distintas!'}),h('div',{className:'panel'},
+  h('div',{className:'row'},LK.map((x,k)=>h('button',{key:k,className:'tile'+(l.includes(k)?' good':''),onClick:()=>{setL(l.includes(k)?l.filter(y=>y!==k):[...l,k]);say(x[1])}},x[0],h('small',null,x[1])))),
+  l.length>0&&h('button',{className:'btn go',onClick:()=>say('¡Qué bueno! A otros niños les gustan otras cosas. ¡Somos distintos y eso es genial!',next)},'💖 ¡Listo!')))}
+function Level3({av,st,setSt,finish,back}){const [s,setS]=useState(0),next=()=>setS(x=>x+1);
+ return h('div',null,h(Bar,{s,n:4,back}),s===0&&h(Builder,{av,st,setSt,next}),s===1&&h(Likes,{next}),
+  s===2&&h(Pick,{t:'Todos los niños tienen un país. ¿Cuál es el tuyo? Toca su bandera.',items:FL,sayf:x=>'¡'+x[1]+'! Es tu país.',btn:'🌎 ¡Listo!',next}),
+  s===3&&h(Fin,{t:'Toca el micrófono y grita: ¡Todos somos únicos!',shout:'¡Somos únicos!',badge:'🎓',title:'¡Soy único!',win:'¡Eres único y valioso! ¡Todos tenemos identidad!',finish}),h(Dots,{s,n:4}))}
+function Level1({name,setName,av,setAv,finish,back}){
+ const [s,setS]=useState(0),next=()=>setS(x=>x+1);
+ return h('div',null,
+  h('div',{className:'top'},h('button',{className:'say','aria-label':'Volver al mapa',onClick:back},'🏝️'),h('div',{className:'stars'},'⭐'.repeat(s)+'☆'.repeat(Math.max(0,5-s)))),
+  s===0&&h(Setup,{name,setName,av,setAv,next}),s===1&&h(Puzzle,{name,next}),s===2&&h(Quiz,{next}),s===3&&h(Match,{name,av,next}),s===4&&h(Finale,{finish}),
+  h('div',{className:'dots'},[0,1,2,3,4].map(i=>h('i',{key:i,className:i<=s?'d':''}))))}
+
+function MapView({name,av,got,go,st}){const done=got.includes('name'),d2=got.includes('fam'),d3=got.includes('nat'),all=d3;
+ return h('div',null,h(Lula,{t:all?'¡Completaste tu carnet, '+name+'! ¡Eres único y valioso!':done?'¡Qué bien, '+(name||'explorador')+'! Toca el siguiente botón para seguir.':'Toca el botón verde para empezar a jugar.'}),
+  h(Carnet,{name:name||'Explorador',av,got,st}),
+  h('div',{className:'path'},
+   h('div',{className:'node'},h('button',{'aria-label':'Jugar nivel 1',onClick:()=>go(1)},done?'✅':'▶'),'Mi nombre'),
+   h('div',{className:'node'},done?h('button',{'aria-label':'Jugar nivel 2',onClick:()=>go(2)},d2?'✅':'▶'):h('div',null,'🔒'),'Mi familia'),
+   h('div',{className:'node'},d2?h('button',{'aria-label':'Jugar nivel 3',onClick:()=>go(3)},d3?'✅':'▶'):h('div',null,'🔒'),'Soy único')),
+  h('details',null,h('summary',null,'👩‍🏫 Información para adultos'),
+   h('p',null,'Nivel 1: nombre propio. Se usa la voz para decir el nombre, elegir respuestas y la frase final; si el navegador no reconoce la voz, todo se puede tocar.'),
+   h('p',null,'Nivel 2: fecha y lugar de nacimiento y familia (rompecabezas de foto familiar, pin en el mapa). Premio: piezas 🎂 📍 👨‍👩‍👧.'),
+   h('p',null,'Nivel 3: todos somos únicos (crear mi avatar, unir rasgos). Premio: pieza 🌎 y diploma.'),
+   h('p',null,'Para el micrófono, permite el acceso en el navegador. Funciona mejor en Chrome o Safari.')))}
+
+function App(){
+ const [scr,setScr]=useState('start'),[name,setName]=useState(''),[av,setAv]=useState('🦊'),[got,setGot]=useState([]),[st,setSt]=useState({bg:BG[3],acc:'',pet:''}),[bk,setBk]=useState(0);
+ useEffect(()=>{const f=()=>{setBk(Date.now());setTimeout(()=>setBk(0),2200)};window.addEventListener('burst',f);return()=>window.removeEventListener('burst',f)},[]);
+ const sky=h('div',{className:'sky','aria-hidden':true},h('span',{style:{top:'70%',animationDelay:'-5s'}},'🦋'),h('span',{style:{top:'18%',animationDelay:'-22s'}},'⭐'),h('span',{style:{top:'42%',animationDelay:'-9s'}},'🎈'),h('span',{style:{top:'8%'}},'☁️'),h('span',{style:{top:'30%',animationDelay:'-15s'}},'☁️'),h('span',{style:{top:'55%',animationDelay:'-27s'}},'🎈'));
+ return h(React.Fragment,null,sky,bk>0&&h(Confetti,{key:bk}),
+  scr==='start'?h('div',{style:{textAlign:'center',paddingTop:60}},h('div',{style:{fontSize:110}},'🏝️'),h('h1',{style:{fontSize:34,margin:'8px 0 24px'}},'Mi Isla Única'),h('button',{className:'btn go',style:{fontSize:34},onClick:()=>setScr('map')},'▶ Jugar'))
+  :scr==='map'?h(MapView,{name,av,got,st,go:n=>setScr('l'+n)})
+  :scr==='l2'?h(Level2,{back:()=>setScr('map'),finish:()=>{setGot(g=>[...new Set([...g,'date','place','fam'])]);setScr('map')}}):scr==='l3'?h(Level3,{av,st,setSt,back:()=>setScr('map'),finish:()=>{setGot(g=>[...new Set([...g,'nat','style'])]);setScr('map')}}):h(Level1,{name,setName,av,setAv,back:()=>setScr('map'),finish:()=>{setGot(g=>[...new Set([...g,'name'])]);setScr('map')}}));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>
